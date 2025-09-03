@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:2000/movies', // backend route
+  baseURL: 'https://moviedashboardbackend.vercel.app/movies', // backend route
 });
 
 export default api;
