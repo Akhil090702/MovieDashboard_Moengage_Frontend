@@ -1,0 +1,62 @@
+.movie-details-container {
+  max-width: 80%;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.movie-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media(min-width: 768px) {
+  .movie-header {
+    flex-direction: row;
+  }
+}
+
+.movie-poster {
+  max-width: 100%;
+  border-radius: 10px;
+  object-fit:contain;
+  min-width: 38%;
+}
+
+.movie-basic-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.movie-basic-info h1 {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  color: #1e3a8a;
+}
+
+.movie-basic-info p {
+  margin: 0.2rem 0;
+}
+
+.imdb-link {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #f5c518;
+  color: #000;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.imdb-link:hover {
+  background-color: #e5b010;
+}

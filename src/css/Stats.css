@@ -1,0 +1,124 @@
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.spinner {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #1d77b2;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.stats-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #1f2937;
+}
+
+.stats-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 2rem;
+}
+
+.stats-flex {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.stats-section {
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  min-width: 24rem;
+}
+
+.stats-section-2 {
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.stats-section h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #3b82f6;
+  margin-bottom: 1rem;
+}
+
+.chart-container {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.chart-wrapper {
+  width: 100%;
+  min-height: 300px;
+  align-items: center;
+}
+
+.chart-title{
+  text-align: center;
+}
+
+
+
+@media (max-width: 868px) {
+  .stats-flex {
+    align-items: center;
+    display: block;
+    padding: 0% !important;
+  }
+  .stats-container{
+    padding: 10 !important;
+  }
+
+  .stats-section{
+    padding: 10 !important;
+  }
+
+  .stats-section-2 {
+    padding: 0 !important;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .stats-flex {
+    padding: 0% !important;
+  }
+  .stats-container{
+    padding: 0 !important;
+  }
+
+  .stats-section{
+    padding: 0 !important;
+  }
+
+  .stats-section-2 {
+    padding: 0 !important;
+  }
+}
