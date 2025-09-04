@@ -34,7 +34,7 @@ It allows users to search movies, filter, sort, view detailed information, and e
 ## 🛠️ Tech Stack  
 
 - **React.js**  
-- **CSS / Tailwind**  
+- **CSS**  
 - **Chart.js**  
 - **Axios**  
 
