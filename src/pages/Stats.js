@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../utils/api";
-import "dotenv/config";
+import dotenv from "dotenv";
 import { Pie, Line, Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -25,6 +25,8 @@ ChartJS.register(
   LineElement,
   BarElement
 );
+
+dotenv.config();
 
 const API_KEY = process.env.OMDB_API_KEY;
 const BASE_URL = process.env.OMDB_BASE;
