@@ -28,7 +28,7 @@ const Home = () => {
       if (res.data && res.data.Search) {
         let movies = res.data.Search;
         const detailedMovies = await Promise.all(
-          movies.map((m) => api.get(`/id${m.imdbID}`).then((res) => res.data))
+          movies.map((m) => api.get(`/id/${m.imdbID}`).then((res) => res.data))
         );
         movies = detailedMovies;
         if (genre) {
