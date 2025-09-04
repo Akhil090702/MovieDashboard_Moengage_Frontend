@@ -42,7 +42,6 @@ It allows users to search movies, filter, sort, view detailed information, and e
 
 ## 📦 Installation & Setup  
 
-```bash
 # Clone the repository
 git clone https://github.com/Akhil090702/MovieDashboard_Moengage_Frontend.git
 cd MovieDashboard_Moengage_Frontend
@@ -56,24 +55,20 @@ REACT_APP_BACKEND_URL=https://moviedashboard-moengage-backend.onrender.com
 # Start the development server
 npm start
 
+---
 
-
-💻 Usage
+## 💻 Usage
 
 Open http://localhost:3000 (or the Render live link).
-
 Search movies via the search bar.
-
 Apply filters and sorting options.
-
 Click a movie card for detailed information.
-
 Explore analytics in the Stats Dashboard.
 
-📌 Notes
+---
+
+## 📌 Notes
 
 This is frontend only — it depends on the backend API for data.
-
 Make sure to update .env with the correct backend API URL when switching between local and production.
-
 Pagination is handled through OMDb’s API (10 results per page).
