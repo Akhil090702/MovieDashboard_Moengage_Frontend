@@ -8,7 +8,6 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
 
   const fetchMovie = async () => {
-
     try {
       const res = await api.get(`/id${id}`);
       setMovie(res.data);
