@@ -1,78 +1,72 @@
-# MovieFlix Dashboard
+# 🎬 MovieFlix Dashboard – Frontend
 
-🎬 **MovieFlix** is a full-stack movie dashboard application that allows users to search for movies, view detailed information, filter by genre, sort by rating/year/title, and explore statistics like genre distribution, average IMDb rating, and runtime trends. It also includes pagination and admin-level caching of movie data for faster performance.
-
----
-
-## Features
-
-- Search movies by title
-- Fetch detailed movie information from OMDb API
-- Filter movies by genre
-- Sort movies by rating, year
-- Pagination support for browsing through search results
-- Movie analytics dashboard:
-  - Genre distribution (Pie chart)
-  - Average IMDb rating (Bar chart)
-  - Average runtime by year (Line chart)
-- Backend caching for faster repeated searches
-- Loader animation while fetching data
+This is the **frontend** of MovieFlix, a movie dashboard application built with React.  
+It allows users to search movies, filter, sort, view detailed information, and explore analytics like genre distribution, IMDb ratings, and runtime trends.
 
 ---
 
-## Tech Stack
+## 🌐 Live Link
 
-- **Frontend:** React, CSS, Chart.js
-- **Backend:** Node.js, Express.js, MongoDB, Axios
-- **APIs:** OMDb API
+- **Frontend (Render):** [MovieFlix Frontend](https://moviedashboard-moengage-frontend-1.onrender.com)  
+
 ---
 
-## Installation & Setup
+## 📂 GitHub Repository
 
-1. Clone the repository
+- **Frontend Repo:** [MovieFlix Frontend GitHub](https://github.com/Akhil090702/MovieDashboard_Moengage_Frontend.git)  
 
-bash
-git clone https://github.com/<your-username>/MovieFlix.git
-cd MovieFlix
+---
 
-2. Install dependencies
+## 🚀 Features
 
-Backend:
+- 🔎 Search movies by title (via backend API)  
+- 🎭 Filter movies by genre  
+- 📊 Sort by rating, year, or title  
+- 📑 Pagination for browsing search results  
+- 📈 Stats Dashboard:  
+  - Genre distribution (Pie chart)  
+  - Average IMDb rating (Bar chart)  
+  - Average runtime by year (Line chart)  
+- 🎬 Smooth loader animation during fetch  
 
-cd backend
+---
+
+## 🛠️ Tech Stack
+
+- **React.js**  
+- **CSS / Tailwind**  
+- **Chart.js**  
+- **Axios**  
+
+---
+
+## 📦 Installation & Setup
+
+1. Clone the repo:
+
+   ```bash
+   git clone https://github.com/Akhil090702/MovieDashboard_Moengage_Frontend.git
+   cd MovieDashboard_Moengage_Frontend
+
+# Install dependencies
 npm install
 
-Frontend:
+# Create a .env file in the root directory
+REACT_APP_BACKEND_URL=https://moviedashboard-moengage-backend.onrender.com
 
-cd frontend
-npm install
-
-3. Setup MongoDB with below connection string
-4. Create a .env file in the backend directory
-PORT=5000
-OMDB_API_KEY=your_omdb_api_key
-MONGO_URI=mongodb://localhost:27017/moviedb
-JWT_SECRET=your_jwt_secret_key
-
-5. Run the backend server
-cd backend
-npm run dev
-
-6. Run the frontend
-cd frontend
+# Start the development server
 npm start
 
-## Usage
 
-1. Open `http://localhost:3000` in your browser.
-2. Use the search bar to look for movies by title.
-3. Apply filters by genre and sorting options.
-4. Click on any movie card to see detailed information.
-5. Browse through pages using the pagination buttons.
-6. View movie analytics in the "View Stats" section.
+💻 Usage
 
-## Notes
+Open http://localhost:3000 (or the Render live link).
 
-- Pagination uses OMDb’s page system (10 results per page). The backend caches results by query + page for faster subsequent access.
-- Loader animation indicates data is being fetched.
+Search movies via the search bar.
+
+Apply filters and sorting options.
+
+Click a movie card for detailed information.
+
+Explore analytics in the Stats Dashboard.
 
