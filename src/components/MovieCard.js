@@ -9,7 +9,7 @@ const MovieCard = ({ movie }) => {
 
   const fetchMovieRating = async () => {
     try {
-      const res = await api.get(`/id${movie.imdbID}`);
+      const res = await api.get(`/id/${movie.imdbID}`);
       setimdbRating(res.data.imdbRating);
     } catch (err) {
       console.error("Error fetching Ratings:", err);
