@@ -13,7 +13,7 @@ const Home = () => {
   const [genre, setGenre] = useState("");
   const [sort, setSort] = useState("");
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false); // ✅ Loader state
+  const [loading, setLoading] = useState(false);
 
   const fetchMovies = async () => {
     try {

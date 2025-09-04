@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../utils/api";
+import "dotenv/config";
 import { Pie, Line, Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -25,8 +26,8 @@ ChartJS.register(
   BarElement
 );
 
-const API_KEY = "cea62c6";
-const BASE_URL = "http://www.omdbapi.com/";
+const API_KEY = process.env.OMDB_API_KEY;
+const BASE_URL = process.env.OMDB_BASE;
 
 const Stats = () => {
   const [genreData, setGenreData] = useState([]);
@@ -104,7 +105,6 @@ const Stats = () => {
     );
   }
 
-  // Chart configs
   const pieData = {
     labels: genreData.map(([g]) => g),
     datasets: [
