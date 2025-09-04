@@ -14,6 +14,7 @@ import {
 } from "chart.js";
 import "../css/Stats.css";
 
+// Register chart.js components
 ChartJS.register(
   ArcElement,
   Tooltip,
@@ -25,66 +26,21 @@ ChartJS.register(
   BarElement
 );
 
-const API_KEY = "cea62c6";
-const BASE_URL = "http://www.omdbapi.com/";
-
 const Stats = () => {
   const [genreData, setGenreData] = useState([]);
   const [avgRating, setAvgRating] = useState(0);
   const [runtimeData, setRuntimeData] = useState([]);
-  const [loading, setLoading] = useState(true); // 🔹 Loader state
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const allMovies = [];
-        for (let page = 1; page <= 3; page++) {
-          const { data } = await api.get(
-            `${BASE_URL}?apikey=${API_KEY}&s=movie&type=movie&page=${page}`
-          );
-          if (data.Search) allMovies.push(...data.Search);
-        }
+        const { data } = await api.get("/stats");
 
-        const detailedMovies = await Promise.all(
-          allMovies.map((m) =>
-            api
-              .get(`${BASE_URL}?apikey=${API_KEY}&i=${m.imdbID}`)
-              .then((res) => res.data)
-          )
-        );
-
-        const genreCount = {};
-        detailedMovies.forEach(({ Genre }) =>
-          Genre?.split(",").forEach((g) => {
-            const genre = g.trim();
-            genreCount[genre] = (genreCount[genre] || 0) + 1;
-          })
-        );
-        setGenreData(Object.entries(genreCount));
-
-        const ratings = detailedMovies
-          .map((m) => parseFloat(m.imdbRating))
-          .filter(Boolean);
-        setAvgRating(
-          (ratings.reduce((a, b) => a + b, 0) / ratings.length).toFixed(2)
-        );
-
-        const runtimeByYear = {};
-        detailedMovies.forEach(({ Year, Runtime }) => {
-          const runtime = parseInt(Runtime);
-          if (Year && runtime) {
-            runtimeByYear[Year] = runtimeByYear[Year] || [];
-            runtimeByYear[Year].push(runtime);
-          }
-        });
-        setRuntimeData(
-          Object.entries(runtimeByYear).map(([year, runtimes]) => ({
-            year,
-            avg: (
-              runtimes.reduce((a, b) => a + b, 0) / runtimes.length
-            ).toFixed(2),
-          }))
-        );
+        // Convert backend data into chart-friendly state
+        setGenreData(Object.entries(data.genreCount));
+        setAvgRating(parseFloat(data.avgRating));
+        setRuntimeData(data.runtimeData);
       } catch (err) {
         console.error("Failed to load stats:", err);
       } finally {
@@ -104,7 +60,7 @@ const Stats = () => {
     );
   }
 
-  // Chart configs
+  // Pie Chart Data (Genres)
   const pieData = {
     labels: genreData.map(([g]) => g),
     datasets: [
@@ -124,13 +80,19 @@ const Stats = () => {
     ],
   };
 
+  // Bar Chart Data (Average IMDb Rating)
   const barData = {
     labels: ["Average Rating"],
     datasets: [
-      { label: "Rating", data: [avgRating], backgroundColor: "#FF6384" },
+      {
+        label: "Rating",
+        data: [avgRating],
+        backgroundColor: "#FF6384",
+      },
     ],
   };
 
+  // Line Chart Data (Runtime by Year)
   const lineData = {
     labels: runtimeData.map((r) => r.year),
     datasets: [
@@ -146,7 +108,7 @@ const Stats = () => {
 
   return (
     <div className="stats-container">
-      <h2>Movie Analytics Dashboard</h2>
+      <h2>📊 Movie Analytics Dashboard</h2>
       <div className="stats-flex">
         {genreData.length > 0 && (
           <div className="stats-section">
@@ -154,6 +116,7 @@ const Stats = () => {
             <Pie data={pieData} />
           </div>
         )}
+
         {avgRating > 0 && (
           <div className="stats-section">
             <h3 className="chart-title">⭐ Average IMDb Rating</h3>
@@ -164,6 +127,7 @@ const Stats = () => {
           </div>
         )}
       </div>
+
       {runtimeData.length > 0 && (
         <div className="stats-section-2">
           <h3 className="chart-title">⏱️ Avg Runtime by Year</h3>
